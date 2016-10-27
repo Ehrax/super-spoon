@@ -7,13 +7,10 @@
 declare -A IPS
 # add Main cluster node as last
 # declare as following ([host_name]=host_ip
-IPS=(['script-test4']='134.60.64.199' \
-    ['script-test2']='134.60.64.243' \
-    ['script-test3']='134.60.64.201' \
-    ['script-test']='134.60.64.235')
+IPS=([host_name]=host_ip)
 
 USER='ubuntu' # Openstack User, Default: Ubuntu
-SSH_KEY='~/.ssh/cloud.key' # Your Key
+SSH_KEY='my_key' # Your Key
 
 # COUCHBASE PARAMETERS
 BASE_BINARY='http://packages.couchbase.com/releases/4.1.0/couchbase-server-community_4.1.0-ubuntu14.04_amd64.deb'
