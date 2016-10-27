@@ -10,5 +10,5 @@ cd super-spoon
 How to use each script is documented in their specific directories.
 
 # TODO
-[ ] Mongodb script
-[ ] Cassandra script
+- [ ] Mongodb script
+- [ ] Cassandra script
