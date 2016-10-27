@@ -8,3 +8,7 @@ git clone https://github.com/Ehrax/super-spoon.git
 cd super-spoon
 ```
 How to use each script is documented in their specific directories.
+
+# TODO
+[ ] Mongodb script
+[ ] Cassandra script
