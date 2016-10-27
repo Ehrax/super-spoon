@@ -13,7 +13,7 @@ USER='ubuntu' # Openstack User, Default: Ubuntu
 SSH_KEY='my_key' # Your Key
 
 # COUCHBASE PARAMETERS
-BASE_BINARY='http://packages.couchbase.com/releases/4.1.0/couchbase-server-community_4.1.0-ubuntu14.04_amd64.deb'
+BASE_BINARY=''
 BUCKET_NAME='default' # Name of Bucket, Default: default
 RAMSIZE=5000 # Couchbase Ramsize
 INDEXSIZE=1000 # Couchbase Indexsize
