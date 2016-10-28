@@ -9,14 +9,14 @@ declare -A IPS
 # declare as following ([host_name]=host_ip
 IPS=([host_name]=host_ip)
 
-USER='ubuntu' # Openstack User, Default: Ubuntu
-SSH_KEY='my_key' # Your Key
+USER='ubuntu' # maschine user, Default: Ubuntu
+SSH_KEY='my_key' # path to youre key
 
 # COUCHBASE PARAMETERS
-BASE_BINARY=''
-BUCKET_NAME='default' # Name of Bucket, Default: default
-RAMSIZE=5000 # Couchbase Ramsize
-INDEXSIZE=1000 # Couchbase Indexsize
+BASE_BINARY='' # link to couchbase binary
+BUCKET_NAME='default' # name of Bucket, Default: default
+RAMSIZE=5000 # couchbase Ramsize
+INDEXSIZE=1000 # couchbase Indexsize
 
 # Administration
 CH_USER='admin' # couchbase admin
