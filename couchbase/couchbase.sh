@@ -3,7 +3,6 @@
 ###############################################################################
 # GLOBAL PARAMETERS
 ###############################################################################
-
 declare -A IPS
 # add Main cluster node as last
 # declare as following (["host_name"]="host_ip"
@@ -21,9 +20,8 @@ INDEXSIZE=1000 # couchbase Indexsize
 # Administration
 CH_USER='admin' # couchbase admin
 CH_PW='topsecret' # couchbase admin password
-
 ###############################################################################
-# SET UP COUCHBASE
+#  INITIALIZE COUCHBASE
 ###############################################################################
 echo "starting to install couchbase."
 
@@ -55,9 +53,11 @@ for k in "${!IPS[@]}"; do
 done
 
 echo "finished to install couchbase."
-
+###############################################################################
+# CONFIGURE COUCHBASE
+###############################################################################
+echo "starting to setting up couchbase"
 KEYS=(${!IPS[@]})
-
 CREATE_BUCKET="IPADDR=(\$(hostname -I)); \
         /opt/couchbase/bin/couchbase-cli bucket-create -c \$IPADDR:8091 \
         -u $CH_USER \
