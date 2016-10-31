@@ -22,7 +22,7 @@ CASSANDRA_BINARY="http://archive.apache.org/dist/cassandra/2.2.6/apache-cassandr
 CLUSTER_NAME="benchmark cluster"
 # declare which node should be seed node, is only used if you deploy a cluster
 # MAIN_NODE="main_hoste_name"
-MAIN_NODE="script-test"
+MAIN_NODE="host_name"
 
 ```
 
