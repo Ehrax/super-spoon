@@ -4,7 +4,7 @@
 # GLOBAL PARAMETERS
 ###############################################################################
 declare -A IPS
-# add Main cluster node as last
+
 # declare as following IPS[host_name]="host_ip"
 IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"
@@ -13,10 +13,13 @@ USER='ubuntu' # maschine user, Default: Ubuntu
 SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
 # COUCHBASE PARAMETERS
-BASE_BINARY='http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb' # link to couchbase binary
+BASE_BINARY='url to binary' # link to couchbase binary
 BUCKET_NAME='default' # name of Bucket, Default: default
 RAMSIZE=5000 # couchbase Ramsize
 INDEXSIZE=1000 # couchbase Indexsize
+
+# decide which node should be main node of cluster
+MAIN_NODE="host_name"
 
 # Administration
 CH_USER='admin' # couchbase admin
@@ -77,8 +80,8 @@ if [ ${#IPS[@]} -eq 1 ]; then # just one couchbase server
 
     exit 1
 else # if a cluster should be deployed
-    MAIN_NODE_IP=${IPS[${KEYS[0]}]}
-    unset IPS[${KEYS[0]}]
+    MAIN_NODE_IP=${IPS[$MAIN_NODE]}
+    unset IPS[$MAIN_NODE}]
 
     sleep 2
     # create bucket on cluster

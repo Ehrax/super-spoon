@@ -1,4 +1,9 @@
 # SUPER - SPOON Couchbase Script
+- change parameters as you need them
+- script will set up a cluster or a single couchbase server. This depends on 
+how many maschines you have added.
+    - 1 server = 1 singel couchbase server
+    - 1..n servers = couchbase cluster
 ```bash
 # open ./couchbase.sh
 vim ./couchbase.sh
@@ -7,20 +12,23 @@ vim ./couchbase.sh
 ###############################################################################
 # GLOBAL PARAMETERS
 ###############################################################################
-
 declare -A IPS
-# add Main cluster node as last
-# declare as following ([host_name]=host_ip
-IPS=([host_name]=host_ip)
 
-USER='ubuntu' # Openstack User, Default: Ubuntu
-SSH_KEY='my_key' # Your Key
+# declare as following IPS[host_name]="host_ip"
+IPS[host_name]="host_ip"
+IPS[host_name2]="host_ip2"
+
+USER='ubuntu' # maschine user, Default: Ubuntu
+SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
 # COUCHBASE PARAMETERS
-BASE_BINARY='my_couchbase_binary'
-BUCKET_NAME='default' # Name of Bucket, Default: default
-RAMSIZE=5000 # Couchbase Ramsize
-INDEXSIZE=1000 # Couchbase Indexsize
+BASE_BINARY='url to binary' # link to couchbase binary
+BUCKET_NAME='default' # name of Bucket, Default: default
+RAMSIZE=5000 # couchbase Ramsize
+INDEXSIZE=1000 # couchbase Indexsize
+
+# decide which node should be main node of cluster
+MAIN_NODE="host_name"
 
 # Administration
 CH_USER='admin' # couchbase admin
@@ -36,5 +44,7 @@ IPS[host_name2]="host_ip2"
         .
     and so on..
 ```
-
-Script was tested on 4 Maschines with Ubuntu 14.04 and Couchbase 4.1.0
+start script
+```bash
+./couchbase.sh
+```

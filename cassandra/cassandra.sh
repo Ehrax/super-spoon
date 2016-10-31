@@ -3,7 +3,7 @@
 # GLOBAL PARAMETSR
 ###############################################################################
 declare -A IPS
-# add seed cluster node as last
+
 # declare as following ([host_name]=host_ip
 IPS[script-test]="134.60.64.235"
 IPS[script-test2]="134.60.64.243"
@@ -16,7 +16,9 @@ CASSANDRA_BINARY="http://archive.apache.org/dist/cassandra/2.2.6/apache-cassandr
 
 # cassandra parameters
 CLUSTER_NAME="benchmark cluster"
-RPC_ADDRESS="0.0.0.0"
+# declare which node should be seed node, is only used if you deploy a cluster
+# MAIN_NODE="main_hoste_name"
+MAIN_NODE="script-test"
 
 ###############################################################################
 # INITIALIZE CASSANDRA
@@ -70,8 +72,8 @@ if [ ${#IPS[@]} -eq 1 ]; then # just one cassandra node
         ./cassandra/bin/cqlsh --file ./ycsb-setup.cql;"
     echo "finished to configure cassandra, you can now connect on ${IPS[${KEYS[0]}]}"
 else # build cassandra cluster
-    SEED_NODE=${IPS[${KEYS[0]}]} # seed node ip
-    unset IPS[${KEYS[0]}] # remove seed node from list
+    SEED_NODE=${IPS[$MAIN_NODE]}
+    unset IPS[$MAIN_NODE] # remove seed node from list
     SEEDS=$(ssh -i $SSH_KEY $USER@$SEED_NODE "hostname -I | sed s/\ //")
 
     for k in "${!IPS[@]}"; do
