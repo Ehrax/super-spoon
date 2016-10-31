@@ -5,14 +5,15 @@
 ###############################################################################
 declare -A IPS
 # add Main cluster node as last
-# declare as following (["host_name"]="host_ip"
-IPS=([host_name]=host_ip)
+# declare as following IPS[host_name]="host_ip"
+IPS[host_name]="host_ip"
+IPS[host_name2]="host_ip2"
 
 USER='ubuntu' # maschine user, Default: Ubuntu
-SSH_KEY='my_key' # path to youre key
+SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
 # COUCHBASE PARAMETERS
-BASE_BINARY='' # link to couchbase binary
+BASE_BINARY='http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb' # link to couchbase binary
 BUCKET_NAME='default' # name of Bucket, Default: default
 RAMSIZE=5000 # couchbase Ramsize
 INDEXSIZE=1000 # couchbase Indexsize

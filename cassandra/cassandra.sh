@@ -3,9 +3,10 @@
 # GLOBAL PARAMETSR
 ###############################################################################
 declare -A IPS
-# add Main cluster node as last
+# add seed cluster node as last
 # declare as following ([host_name]=host_ip
-IPS=(["script-test"]="134.60.64.235")
+IPS[script-test]="134.60.64.235"
+IPS[script-test2]="134.60.64.243"
 
 USER="ubuntu" # maschine user, Default: Ubuntu
 SSH_KEY="~/.ssh/cloud.key" # path to youre key
@@ -21,6 +22,7 @@ RPC_ADDRESS="0.0.0.0"
 # INITIALIZE CASSANDRA
 ###############################################################################
 echo "starting to initalize cassandra"
+
 CONFIG="./cassandra/conf/cassandra.yaml"
 
 for k in "${!IPS[@]}"; do
@@ -45,7 +47,7 @@ for k in "${!IPS[@]}"; do
         rm cassandra.tar.gz; \
         mv \$(ls | grep apache-cassandra-*) ./cassandra; \
         sed -i \"s/cluster_name: 'Test Cluster'/cluster_name: '$CLUSTER_NAME'/g\" $CONFIG; \
-        sed -i \"s/listen_address: localhost/listen_addres: $LOCALIP/g\" $CONFIG; \
+        sed -i \"s/listen_address: localhost/listen_address: $LOCALIP/g\" $CONFIG; \
         sed -i \"s/rpc_address: localhost/rpc_address: 0.0.0.0/g\" $CONFIG; \
         sed -i \"s/# broadcast_rpc_address: 1.2.3.4/broadcast_rpc_address: $LOCALIP/g\" $CONFIG;"
 done
@@ -56,3 +58,33 @@ echo "finished to initialize cassandra"
 ###############################################################################
 echo "starting to configure cassandra"
 
+KEYS=(${!IPS[@]})
+SETUP_YCSB=$(<./res/ycsb-setup.cql)
+
+if [ ${#IPS[@]} -eq 1 ]; then # just one cassandra node
+    LOCALIP=$(ssh -i $SSH_KEY $USER@${IPS[${KEYS[0]}]} "hostname -I | sed s/\ //")
+    ssh -i $SSH_KEY $USER@${IPS[${KEYS[0]}]} "sed -i 's/- seeds: \"127.0.0.1\"/- seeds: \"$LOCALIP\"/g' $CONFIG; \
+        nohup ./cassandra/bin/cassandra > cassandra.out 2> cassandra.err < /dev/null &"
+    sleep 20
+    ssh -i $SSH_KEY $USER@${IPS[${KEYS[0]}]} "echo \"$SETUP_YCSB\" > ./ycsb-setup.cql; \
+        ./cassandra/bin/cqlsh --file ./ycsb-setup.cql;"
+    echo "finished to configure cassandra, you can now connect on ${IPS[${KEYS[0]}]}"
+else # build cassandra cluster
+    SEED_NODE=${IPS[${KEYS[0]}]} # seed node ip
+    unset IPS[${KEYS[0]}] # remove seed node from list
+    SEEDS=$(ssh -i $SSH_KEY $USER@$SEED_NODE "hostname -I | sed s/\ //")
+
+    for k in "${!IPS[@]}"; do
+        LOCALIP=$(ssh -i $SSH_KEY $USER@${IPS[$k]} "hostname -I | sed s/\ //")
+        SEEDS=$SEEDS","$LOCALIP
+        ssh -i $SSH_KEY $USER@${IPS[$k]} "sed -i 's/- seeds: \"127.0.0.1\"/- seeds: \"$LOCALIP\"/g' $CONFIG; \
+        nohup ./cassandra/bin/cassandra > cassandra.out 2> cassandra.err < /dev/null &"
+    done
+
+    ssh -i $SSH_KEY $USER@$SEED_NODE "sed -i 's/- seeds: \"127.0.0.1\"/- seeds: \"$SEEDS\"/g' $CONFIG; \
+        nohup ./cassandra/bin/cassandra > cassandra.out 2> cassandra.err < /dev/null &"
+    sleep 20
+    ssh -i $SSH_KEY $USER@$SEED_NODE "echo \"$SETUP_YCSB\" > ./ycsb-setup.cql; \
+        ./cassandra/bin/cqlsh --file ./ycsb-setup.cql;"
+    echo "finished to configure cassandra cluster, seed node is $SEED_NODE"
+fi

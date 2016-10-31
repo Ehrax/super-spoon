@@ -29,7 +29,12 @@ CH_PW='topsecret' # couchbase admin password
 ```
 remember to add all maschine addresses as following:
 ```bash
-IPS=([fancy-maschine]=127.0.0.1 [super-spoon]=127.0.0.2 [my-maschine]=127.0.0.3)
+IPS[host_name]="host_ip"
+IPS[host_name2]="host_ip2"
+        .
+        .
+        .
+    and so on..
 ```
 
 Script was tested on 4 Maschines with Ubuntu 14.04 and Couchbase 4.1.0
