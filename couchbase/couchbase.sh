@@ -9,7 +9,7 @@ declare -A IPS
 IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"
 
-USER='ubuntu' # maschine user, Default: Ubuntu
+USER='ubuntu' # machine user, Default: Ubuntu
 SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
 # COUCHBASE PARAMETERS

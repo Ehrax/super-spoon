@@ -1,7 +1,7 @@
 # SUPER - SPOON Cassandra set up script
 1. change parametesr
-    - 1x maschine added = 1 cassandra server
-    - 1..n maschines added = 1..n cassandra cluster with one seed node
+    - 1x machine added = 1 cassandra server
+    - 1..n machines added = 1..n cassandra cluster with one seed node
 ```bash
 ###############################################################################
 # GLOBAL PARAMETSR
@@ -12,7 +12,7 @@ declare -A IPS
 IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"
 
-USER="ubuntu" # maschine user, Default: Ubuntu
+USER="ubuntu" # machine user, Default: Ubuntu
 SSH_KEY="~/.ssh/cloud.key" # path to youre key
 
 # link to cassandra binary
@@ -26,7 +26,7 @@ MAIN_NODE="host_name"
 
 ```
 
-remember to add maschines as following:
+remember to add machines as following:
 
 ```bash
 IPS[host_name]="host_ip"

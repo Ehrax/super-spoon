@@ -1,7 +1,7 @@
 # SUPER - SPOON Couchbase Script
 - change parameters as you need them
 - script will set up a cluster or a single couchbase server. This depends on 
-how many maschines you have added.
+how many machines you have added.
     - 1 server = 1 singel couchbase server
     - 1..n servers = couchbase cluster
 ```bash
@@ -18,7 +18,7 @@ declare -A IPS
 IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"
 
-USER='ubuntu' # maschine user, Default: Ubuntu
+USER='ubuntu' # machine user, Default: Ubuntu
 SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
 # COUCHBASE PARAMETERS
@@ -35,7 +35,7 @@ CH_USER='admin' # couchbase admin
 CH_PW='topsecret' # couchbase admin password
 
 ```
-remember to add all maschine addresses as following:
+remember to add all machine addresses as following:
 ```bash
 IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"

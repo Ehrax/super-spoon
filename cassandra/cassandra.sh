@@ -8,7 +8,7 @@ declare -A IPS
 IPS[host_ip]="host_name"
 IPS[host_ip2]="host_name2"
 
-USER="ubuntu" # maschine user, Default: Ubuntu
+USER="ubuntu" # machine user, Default: Ubuntu
 SSH_KEY="path to ssh key" # path to youre key
 
 # link to cassandra binary 
