@@ -23,3 +23,8 @@ How to use each script is documented in their directories.
 - [x] Cassandra script
 - [ ] Mongodb script
 - [ ] diffrent network setup
+- [ ] cassandra, more seed nodes
+- [ ] replication factor, chouchbase and cassandra
+- [ ] memory size and heap for cassandra
+- [ ] flush script for couchbase, mongodb, cassandra
+- [ ] Mongodb Parameter, specify storage engine
