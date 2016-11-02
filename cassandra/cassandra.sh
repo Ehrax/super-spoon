@@ -66,7 +66,7 @@ echo "finished to initialize cassandra"
 echo "starting to configure cassandra"
 
 KEYS=(${!IPS[@]})
-sed -i "s/'replication_factor': ?/'replication_factor': $REPLICATION_FACTOR/g"
+sed -i "s/'replication_factor': ?/'replication_factor': $REPLICATION_FACTOR/g" ./res/ycsb-setup.cql
 SETUP_YCSB=$(<./res/ycsb-setup.cql)
 
 if [ ${#IPS[@]} -eq 1 ]; then # just one cassandra node
