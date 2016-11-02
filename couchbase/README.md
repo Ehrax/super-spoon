@@ -48,3 +48,6 @@ start script
 ```bash
 ./couchbase.sh
 ```
+# renew couchbase
+1. change parameters in './renew_ch.sh'
+2. start './nenew_ch.sh'

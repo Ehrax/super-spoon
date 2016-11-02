@@ -43,3 +43,20 @@ start script
 ./cassandra.sh
 
 ```
+
+# renewing
+1. change parameters in ./renew_cas.sh
+```bash
+###############################################################################
+# GLOBAL PARAMETSR
+###############################################################################
+IP="host_ip"
+
+USER="ubuntu" # machine user, Default: Ubuntu
+SSH_KEY="path_to_key" # path to youre key
+```
+2. save file
+3. start script
+```bash
+./renew_cas.sh
+```

@@ -2,10 +2,10 @@
 ###############################################################################
 # GLOBAL PARAMETSR
 ###############################################################################
-IP="134.60.64.235"
+IP="host_ip"
 
 USER="ubuntu" # machine user, Default: Ubuntu
-SSH_KEY="~/.ssh/cloud.key" # path to youre key
+SSH_KEY="path_to_key" # path to youre key
 
 ###############################################################################
 # RENEW CASSANDRA

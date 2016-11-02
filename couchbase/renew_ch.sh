@@ -3,10 +3,10 @@
 ###############################################################################
 # GLOBAL PARAMETERS
 ###############################################################################
-IP="134.60.64.235" # machine ip
+IP="host_ip" # machine ip
 USER="ubunut" # machine user
 
-SSH_KEY="~/.ssh/cloud.key"
+SSH_KEY="path_to_key"
 
 # COUCHBASE PARAMETERS
 BUCKET_NAME='default' # name of Bucket, Default: default
