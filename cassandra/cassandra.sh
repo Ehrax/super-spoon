@@ -6,6 +6,7 @@ declare -A IPS
 
 # declare as following ([host_name]=host_ip
 IPS[script-test]="134.60.64.235"
+# IPS[script-test2]="134.60.64.243"
 
 USER="ubuntu" # machine user, Default: Ubuntu
 SSH_KEY="~/.ssh/cloud.key" # path to youre key
@@ -15,9 +16,14 @@ CASSANDRA_BINARY="http://archive.apache.org/dist/cassandra/2.2.6/apache-cassandr
 
 # cassandra parameters
 CLUSTER_NAME="benchmark cluster"
+
 # declare which node should be seed node, is only used if you deploy a cluster
 # MAIN_NODE="main_hoste_name"
 MAIN_NODE="script-test"
+REPLICATION_FACTOR=1
+
+# MAX_HEAP_SIZE="12G"
+# MEMORY=""
 
 ###############################################################################
 # INITIALIZE CASSANDRA
@@ -60,6 +66,7 @@ echo "finished to initialize cassandra"
 echo "starting to configure cassandra"
 
 KEYS=(${!IPS[@]})
+sed -i "s/'replication_factor': ?/'replication_factor': $REPLICATION_FACTOR/g"
 SETUP_YCSB=$(<./res/ycsb-setup.cql)
 
 if [ ${#IPS[@]} -eq 1 ]; then # just one cassandra node

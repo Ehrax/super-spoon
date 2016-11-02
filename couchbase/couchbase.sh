@@ -12,18 +12,21 @@ IPS[script-test2]="134.60.64.243"
 USER='ubuntu' # machine user, Default: Ubuntu
 SSH_KEY='~/.ssh/cloud.key' # path to youre key
 
+# link to couchbase binary
+BASE_BINARY='http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb'
+
 # COUCHBASE PARAMETERS
-BASE_BINARY='http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb' # link to couchbase binary
 BUCKET_NAME='default' # name of Bucket, Default: default
 RAMSIZE=5000 # couchbase Ramsize
 INDEXSIZE=1000 # couchbase Indexsize
+REPLICATION_FACTOR=1 # couchabse replication factor
 
 # decide which node should be main node of cluster
 MAIN_NODE="script-test"
 
-# Administration
 CH_USER='admin' # couchbase admin
 CH_PW='topsecret' # couchbase admin password
+
 ###############################################################################
 #  INITIALIZE COUCHBASE
 ###############################################################################
@@ -70,6 +73,7 @@ CREATE_BUCKET="IPADDR=(\$(hostname -I)); \
         --bucket-type=couchbase \
         --bucket-ramsize=$RAMSIZE \
         --bucket-priority=high \
+        --bucket-replica=$REPLICATION_FACTOR \
         --wait;"
 
 if [ ${#IPS[@]} -eq 1 ]; then # just one couchbase server
