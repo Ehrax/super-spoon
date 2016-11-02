@@ -48,7 +48,7 @@ start script
 1. change parameters in ./renew_cas.sh
 ```bash
 ###############################################################################
-# GLOBAL PARAMETSR
+# GLOBAL PARAMETERS
 ###############################################################################
 IP="host_ip"
 

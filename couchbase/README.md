@@ -49,5 +49,24 @@ start script
 ./couchbase.sh
 ```
 # renew couchbase
-1. change parameters in './renew_ch.sh'
-2. start './nenew_ch.sh'
+1. change parameters in ./renew_ch.sh
+```bash
+###############################################################################
+# GLOBAL PARAMETERS
+###############################################################################
+IP="host_ip" # machine ip
+USER="ubunut" # machine user
+
+SSH_KEY="path_to_key"
+
+# COUCHBASE PARAMETERS
+BUCKET_NAME='default' # name of Bucket, Default: default
+RAMSIZE=5000 # couchbase Ramsize
+REPLICATION_FACTOR=1 # couchabse replication factor
+
+CH_USER="admin" # couchbase admin
+CH_PW="topsecret" # couchbase admin password
+
+```
+2. save
+3. start './nenew_ch.sh'
