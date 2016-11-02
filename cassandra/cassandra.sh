@@ -5,11 +5,10 @@
 declare -A IPS
 
 # declare as following ([host_name]=host_ip
-IPS[script-test]="134.60.64.235"
-# IPS[script-test2]="134.60.64.243"
+IPS[host_name]="host_ip"
 
 USER="ubuntu" # machine user, Default: Ubuntu
-SSH_KEY="~/.ssh/cloud.key" # path to youre key
+SSH_KEY="path_to_key" # path to youre key
 
 # link to cassandra binary
 CASSANDRA_BINARY="http://archive.apache.org/dist/cassandra/2.2.6/apache-cassandra-2.2.6-bin.tar.gz"
@@ -19,7 +18,7 @@ CLUSTER_NAME="benchmark cluster"
 
 # declare which node should be seed node, is only used if you deploy a cluster
 # MAIN_NODE="main_hoste_name"
-MAIN_NODE="script-test"
+MAIN_NODE="host_ip"
 REPLICATION_FACTOR=1
 
 # MAX_HEAP_SIZE="12G"

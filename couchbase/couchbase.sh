@@ -6,14 +6,14 @@
 declare -A IPS
 
 # declare as following IPS[host_name]="host_ip"
-IPS[script-test]="134.60.64.235"
-IPS[script-test2]="134.60.64.243"
+IPS[host_name]="host_ip"
+IPS[host_name2]="host_ip2"
 
-USER='ubuntu' # machine user, Default: Ubuntu
-SSH_KEY='~/.ssh/cloud.key' # path to youre key
+USER="ubuntu" # machine user, Default: Ubuntu
+SSH_KEY="path_to_key" # path to youre key
 
 # link to couchbase binary
-BASE_BINARY='http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb'
+BASE_BINARY="http://packages.couchbase.com/releases/4.1.1/couchbase-server-community_4.1.1-ubuntu14.04_amd64.deb"
 
 # COUCHBASE PARAMETERS
 BUCKET_NAME='default' # name of Bucket, Default: default
@@ -22,7 +22,7 @@ INDEXSIZE=1000 # couchbase Indexsize
 REPLICATION_FACTOR=1 # couchabse replication factor
 
 # decide which node should be main node of cluster
-MAIN_NODE="script-test"
+MAIN_NODE="host_name"
 
 CH_USER='admin' # couchbase admin
 CH_PW='topsecret' # couchbase admin password
