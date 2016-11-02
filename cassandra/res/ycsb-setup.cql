@@ -1,5 +1,5 @@
 create keyspace ycsb
-    WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor': 3 };
+    WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor': 1 };
 USE ycsb;
 create table usertable (
     y_id varchar primary key,
