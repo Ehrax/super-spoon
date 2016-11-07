@@ -26,4 +26,4 @@ How to use each script is documented in their directories.
 - [x] replication factor, chouchbase and cassandra
 - [ ] memory size and heap for cassandra
 - [x] flush script for couchbase, cassandra
-- [ ] ycsb set up script
+- [x] ycsb set up script
