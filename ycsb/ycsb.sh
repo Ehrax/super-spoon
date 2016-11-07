@@ -12,7 +12,6 @@ IPS[host_name2]="host_ip2"
 USER="ubuntu" # machine user, Default: Ubuntu
 SSH_KEY="path_to_key" # path to youre key
 
-# ycsb repo
 GITHUB="https://github.com/seybi87/YCSB.git"
 
 ###############################################################################
@@ -40,5 +39,3 @@ for k in "${!IPS[@]}"; do
         sudo apt-get -y install maven2;
         git clone $GITHUB"
 done
-
-echo "finished to initialize ycsb"
