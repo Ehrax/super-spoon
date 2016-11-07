@@ -21,8 +21,9 @@ How to use each script is documented in their directories.
 # TODO
 - [x] Couchbase script
 - [x] Cassandra script
-- [ ] Mongodb script, specify storage engine on start, flush script
+- [x] Mongodb script, specify storage engine on start, flush script
 - [ ] cassandra, more seed nodes
 - [x] replication factor, chouchbase and cassandra
 - [ ] memory size and heap for cassandra
 - [x] flush script for couchbase, cassandra
+- [ ] ycsb set up script
