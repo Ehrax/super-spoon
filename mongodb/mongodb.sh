@@ -11,7 +11,7 @@ OPTION="single_mongo" # OPTIONS: single_mongo, single_cluster, cluster
 IPS[host_name]="host_ip"
 
 USER="ubuntu" # machine user, Default: Ubuntu
-SSH_KEY="path/to/key" # path to youre key
+SSH_KEY="~/.ssh/cloud.key" # path to youre key
 
 # mongodb parameters
 VERSION="3.2.10"
