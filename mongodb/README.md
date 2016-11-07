@@ -1,6 +1,6 @@
 # SUPER - SPOON Mongodb Script
 1. determine which mongdb server you are deploying  
-    - **single_mongo:** 1x mongodb instance one one machine
+    - **single_mongo:** 1x mongodb instance on one machine
     - **single_cluster:** use this option if you want all main cluster instances on   
     same machine. You need atleast 1 machine
     ```
@@ -103,3 +103,19 @@ STORAGE_ENGINE="wiredTiger"
 MONGOS_SERVER="example" # uncomment this if you use cluster
 CONFIG_SERVER="example2" # uncomment this if you use cluster
 ```
+
+# renew mongodb script
+1. change parameters
+```bash
+###############################################################################
+# GLOBAL PARAMETERS
+###############################################################################
+USER="ubunut" # machine user
+
+SSH_KEY="path/to/key"
+
+IP="host_ip" # main mongodb instance
+
+SHARDED="no" # if cluster is sharded
+```
+2. start script
