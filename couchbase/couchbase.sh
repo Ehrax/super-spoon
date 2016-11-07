@@ -85,7 +85,7 @@ if [ ${#IPS[@]} -eq 1 ]; then # just one couchbase server
     exit 1
 else # if a cluster should be deployed
     MAIN_NODE_IP=${IPS[$MAIN_NODE]}
-    unset IPS[$MAIN_NODE}]
+    unset IPS[$MAIN_NODE]
 
     sleep 2
     # create bucket on cluster

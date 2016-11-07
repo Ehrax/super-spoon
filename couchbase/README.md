@@ -19,7 +19,7 @@ IPS[host_name]="host_ip"
 IPS[host_name2]="host_ip2"
 
 USER='ubuntu' # machine user, Default: Ubuntu
-SSH_KEY='~/.ssh/cloud.key' # path to youre key
+SSH_KEY='path/to/key' # path to youre key
 
 # COUCHBASE PARAMETERS
 BASE_BINARY='url to binary' # link to couchbase binary
