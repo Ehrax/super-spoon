@@ -1,4 +1,4 @@
-# SUPER - SPOON
+# YSCB - Setup - Scripts
 Super spoon is a collection of scripts which can set up couchbase, mongodb,
 cassandra on many maschines and distrub them.
 
